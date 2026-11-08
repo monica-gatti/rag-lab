@@ -1,0 +1,21 @@
+{
+  "answer": "The Singleton design pattern ensures that a class has only one instance, while providing a global access point to this instance.",
+  "retrieved": [
+    {
+      "score": 0.827,
+      "source": "design-patterns-en.pdf p.139",
+      "text": "SINGLETON\nSingleton is a creational design pattern that lets you ensure\nthat a class has only one instance, while providing a global\naccess point to this instance.\n138 Creational Design Patterns / Sin"
+    },
+    {
+      "score": 0.783,
+      "source": "design-patterns-en.pdf p.146",
+      "text": "nsibility Principle. The pattern solves\ntwo problems at the time.\nThe Singleton pattern can mask bad design, for instance, when\nthe c omponents o f the program kno w t oo much about\neach other.\n\n\n\n"
+    },
+    {
+      "score": 0.77,
+      "source": "design-patterns-en.pdf p.140",
+      "text": "Problem\nThe Singleton pattern solves two problems at the same time,\nviolating the Single Responsibility Principle:\n1. Ensure that a class has just a single instance. Why would any-\none want to control"
+    }
+  ],
+  "prompt_sent_to_llm": "Answer the question using ONLY the context below.\nIf the answer is not in the context, say \"I don't know\".\n\nContext:\n[design-patterns-en.pdf p.139]\nSINGLETON\nSingleton is a creational design pattern that lets you ensure\nthat a class has only one instance, while providing a global\naccess point to this instance.\n138 Creational Design Patterns / Singleton\n#163517\n<buyer_email>\n\n[design-patterns-en.pdf p.146]\nnsibility Principle. The pattern solves\ntwo problems at the time.\nThe Singleton pattern can mask bad design, for instance, when\nthe c omponents o f the program kno w t oo much about\neach other.\n\n\n\n\n\n\n145 Creational Design Patterns / Singleton\n#163517\n<buyer_email>\n\n[design-patterns-en.pdf p.140]\nProblem\nThe Singleton pattern solves two problems at the same time,\nviolating the Single Responsibility Principle:\n1. Ensure that a class has just a single instance. Why would any-\none want to control how many instances a class has? The most\ncommon reason for this is to control access to some shared\nresource—for example, a database or a file.\nHere’s how it works: imagine that you created an object, but\nafter a while decided to create a new one. Instead of receiving\na fresh object, you’ll get the\n\nQuestion: Explain me the singleton design pattern\nAnswer:"
+}

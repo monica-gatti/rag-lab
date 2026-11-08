@@ -1,0 +1,212 @@
+{
+    "result": {
+        "points": [
+            {
+                "id": "066c0486-14f4-466c-b280-eec58fc026b7",
+                "payload": {
+                    "text": "it has already been created.\nUse the Singleton pattern when you need stricter control over\nglobal variables.\nUnlike global variables, the Singleton pattern guarantees that\nthere\u2019s just one instance of a class. Nothing, except for the Sin-\ngleton class itself, can replace the cached instance.\nNote that you can always adjust this limitation and allow cre-\nating any number of Singleton instances. The only piece of\ncode that needs changing is the body of the getInstance\nmethod.\nHow to Implement\n1. A",
+                    "source": "design-patterns-en.pdf p.145"
+                }
+            },
+            {
+                "id": "141cf172-bbd1-4aaf-bcae-cff4caea2560",
+                "payload": {
+                    "text": "he constructor, but not the\nother objects.\n5. Go over the client code and replace all direct calls to the sin-\ngleton\u2019s constructor with calls to its static creation method.\nPros and Cons\nYou can be sure that a class has only a single instance.\nYou gain a global access point to that instance.\nThe singleton object is initialized only when it\u2019s requested for\nthe first time.\nViolates the Single Responsibility Principle. The pattern solves\ntwo problems at the time.\nThe Singleton pattern can mask bad",
+                    "source": "design-patterns-en.pdf p.146"
+                }
+            },
+            {
+                "id": "17609381-0d5a-4f89-bd85-7e4a3768c4f8",
+                "payload": {
+                    "text": "clared static.6\nprivateprivate staticstatic fieldfield instance: Database7\n8\n// The singleton's constructor should always be private to9\n// prevent direct construction calls with the `new`10\n// operator.11\nprivateprivate constructorconstructor Database() isis12\n// Some initialization code, such as the actual13\n// connection to a database server.14\n// ...15\n\uf292\n142 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.143"
+                }
+            },
+            {
+                "id": "1aed6897-ed7e-41e8-ad01-f4cd7815b34f",
+                "payload": {
+                    "text": " suggestion. No ne ed to\nexplain what a singleton is if you know the pattern and\nits name.\n31 Introduction to Design Patterns / Why Should I Learn Patterns?\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.32"
+                }
+            },
+            {
+                "id": "1b9e55a4-3980-4e88-9829-49930b1b1ea2",
+                "payload": {
+                    "text": "Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.141"
+                }
+            },
+            {
+                "id": "23dee8b5-dd6c-4e60-a697-47156b728e3d",
+                "payload": {
+                    "text": " ApplicationApplication isis36\nmethodmethod main() isis37\nDatabase foo = Database.getInstance()38\nfoo.query(\"SELECT ...\")39\n// ...40\nDatabase bar = Database.getInstance()41\nbar.query(\"SELECT ...\")42\n// The variable `bar` will contain the same object as43\n// the variable `foo`.44\n143 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.144"
+                }
+            },
+            {
+                "id": "29908f9b-2cd6-4d7a-8128-32bd8a5c718c",
+                "payload": {
+                    "text": "Problem\nThe Singleton pattern solves two problems at the same time,\nviolating the Single Responsibility Principle:\n1. Ensure that a class has just a single instance. Why would any-\none want to control how many instances a class has? The most\ncommon reason for this is to control access to some shared\nresource\u2014for example, a database or a file.\nHere\u2019s how it works: imagine that you created an object, but\nafter a while decided to create a new one. Instead of receiving\na fresh object, you\u2019ll get the",
+                    "source": "design-patterns-en.pdf p.140"
+                }
+            },
+            {
+                "id": "3201bec2-cdb2-4f1a-b320-e5520b0fcb40",
+                "payload": {
+                    "text": "Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.147"
+                }
+            },
+            {
+                "id": "33b25f3b-4d7b-49b8-b7b0-934c10c45577",
+                "payload": {
+                    "text": "The pattern requires special treatment in a multithreaded\nenvironment so that multiple threads won\u2019t create a singleton\nobject several times.\nIt may be difficult to unit test the client code of the Single-\nton because many test frameworks rely on inheritance when\nproducing mock objects. Since the constructor of the singleton\nclass is private and overriding static methods is impossible in\nmost languages, you will need to think of a creative way to\nmock the singleton. Or just don\u2019t write the tests",
+                    "source": "design-patterns-en.pdf p.147"
+                }
+            },
+            {
+                "id": "36e73126-4061-4302-afb1-f5571ce1959b",
+                "payload": {
+                    "text": ", but\nafter a while decided to create a new one. Instead of receiving\na fresh object, you\u2019ll get the one you already created.\nNote that this behavior is impossible to implement with a reg-\nular constructor since a constructor callmust always return a\nnew object by design.\nClients may not even realize that they\u2019re working with the same object all\nthe time.\n\uf119\n139 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.140"
+                }
+            },
+            {
+                "id": "381a8ce3-26d6-4010-8c1a-de2de6192954",
+                "payload": {
+                    "text": "there are two fundamental differences\nbetween these patterns:\n1. There should be only one Singleton instance, whereas a\nFlyweight class can have multiple instances with different\nintrinsic states.\n2. The Singleton object can be mutable. Flyweight objects are\nimmutable.\n\uf362\n234 Structural Design Patterns / Flyweight\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.235"
+                }
+            },
+            {
+                "id": "3cbb2fdd-cdd8-4ac9-9000-b9bb1e3ab259",
+                "payload": {
+                    "text": "Relations with Other Patterns\n\u2022 You can implement shared leaf nodes of theComposite tree as\nFlyweights to save some RAM.\n\u2022 Flyweight shows how to make lots of little objects, whereas\nFacade shows how to make a single object that represents an\nentire subsystem.\n\u2022 Flyweight would resemble Singleton if you somehow man-\naged to reduce all shared states of the objects to just one\nflyweight object. But there are two fundamental differences\nbetween these patterns:\n1. There should be only one Singleton ",
+                    "source": "design-patterns-en.pdf p.235"
+                }
+            },
+            {
+                "id": "402f83cc-feb4-4891-9bf2-579189df23c4",
+                "payload": {
+                    "text": " design. Even if you never\nencounter these problems, knowing patterns is still useful\nbecause it teaches you how to solve all sorts of problems using\nprinciples of object-oriented design.\n\u2022 Design patterns define a common language that you and your\nteammates can use to communicate more efficiently. You can\nsay, \u201cOh, just use a Singleton for that,\u201d and everyone will\nunderstand the idea behind y our suggestion. No ne ed to\nexplain what a singleton is if you know the pattern and\nits name.\n31 Introd",
+                    "source": "design-patterns-en.pdf p.32"
+                }
+            },
+            {
+                "id": "43f955fb-5db8-41c7-a6e7-9813ccf99b82",
+                "payload": {
+                    "text": " thenthen24\nDatabase.instance = new Database()25\nreturnreturn Database.instance26\n27\n// Finally, any singleton should define some business logic28\n// which can be executed on its instance.29\npublicpublic methodmethod query(sql) isis30\n// For instance, all database queries of an app go31\n// through this method. Therefore, you can place32\n// throttling or caching logic here.33\n// ...34\n35\nclassclass ApplicationApplication isis36\nmethodmethod main() isis37\nDatabase foo = Database.getInstance()38\nfo",
+                    "source": "design-patterns-en.pdf p.144"
+                }
+            },
+            {
+                "id": "4e520ff1-dd91-4e75-91c6-64373393085c",
+                "payload": {
+                    "text": "Howev-\ner, it also protects that instance from being overwritten by\nother code.\nThere\u2019s another side to this problem: you don\u2019t want the code\nthat solves problem #1 to be scattered all over your program.\nIt\u2019s much better to have it within one class, especially if the\nrest of your code already depends on it.\nNowadays, the Singleton pattern has become so popular that\npeople may call something asingleton even if it solves just one\nof the listed problems.\nSolution\nAll implementations of the Singleto",
+                    "source": "design-patterns-en.pdf p.141"
+                }
+            },
+            {
+                "id": "5ecc3cdc-e987-4466-8b8a-ff8c04c26192",
+                "payload": {
+                    "text": "SINGLETON\nSingleton is a creational design pattern that lets you ensure\nthat a class has only one instance, while providing a global\naccess point to this instance.\n138 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.139"
+                }
+            },
+            {
+                "id": "6f7174da-e54f-48fc-a138-cdc56884e287",
+                "payload": {
+                    "text": "icial government. Regard-\nless of the personal identities of the individuals who form\ngovernments, the title, \u201cThe Government of X\u201d, is a global point\nof access that identifies the group of people in charge.\nStructure\n\uf5e4\n\uf0e8\n141 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.142"
+                }
+            },
+            {
+                "id": "709074d8-1e71-4b45-a898-f25a0e4c4873",
+                "payload": {
+                    "text": "nsibility Principle. The pattern solves\ntwo problems at the time.\nThe Singleton pattern can mask bad design, for instance, when\nthe c omponents o f the program kno w t oo much about\neach other.\n\uf24e\n\uf00c\n\uf00c\n\uf00c\n\uf00d\n\uf00d\n145 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.146"
+                }
+            },
+            {
+                "id": "7e76a35e-0608-4c18-8d20-7be14c2ba7bf",
+                "payload": {
+                    "text": "uages, you will need to think of a creative way to\nmock the singleton. Or just don\u2019t write the tests. Or don\u2019t use\nthe Singleton pattern.\nRelations with Other Patterns\n\u2022 A Facade class can often be transformed into aSingleton since\na single facade object is sufficient in most cases.\n\u2022 Flyweight would resemble Singleton if you somehow man-\naged to reduce all shared states of the objects to just one\nflyweight object. But there are two fundamental differences\nbetween these patterns:\n1. There should",
+                    "source": "design-patterns-en.pdf p.147"
+                }
+            },
+            {
+                "id": "9bc690c1-5618-4336-b933-47bffd1e141b",
+                "payload": {
+                    "text": "\nflyweight object. But there are two fundamental differences\nbetween these patterns:\n1. There should be only one Singleton instance, whereas a\nFlyweight class can have multiple instances with different\nintrinsic states.\n2. The Singleton object can be mutable. Flyweight objects are\nimmutable.\n\u2022 Abstract Factories, Builders and Prototypes can all be imple-\nmented as Singletons.\n\uf00d\n\uf00d\n\uf362\n146 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.147"
+                }
+            },
+            {
+                "id": "a189968f-bab6-45c9-a5b2-29f802536a4b",
+                "payload": {
+                    "text": "Applicability\nUse the Singleton pattern when a class in your program should\nhave just a single instance available to all clients; for exam-\nple, a single database object shared by different parts of the\nprogram.\nThe Singleton pattern disables all other means of creating\nobjects of a class except for the special creation method. This\nmethod either creates a new object or returns an existing one\nif it has already been created.\nUse the Singleton pattern when you need stricter control over\nglobal va",
+                    "source": "design-patterns-en.pdf p.145"
+                }
+            },
+            {
+                "id": "c014a278-efe1-47aa-b538-42f16501806b",
+                "payload": {
+                    "text": "r........................................................................................105\n\u00a7 Prototype ...................................................................................124\n\u00a7 Singleton ...................................................................................138\nStructural Design Patterns ....................................................................... 147\n\u00a7 Adapter.......................................................................................150\n\u00a7 Brid",
+                    "source": "design-patterns-en.pdf p.6"
+                }
+            },
+            {
+                "id": "c4e3eb33-fb53-4263-a902-6aa593a96da3",
+                "payload": {
+                    "text": "create an object and saves it in a static field. All following calls\nto this method return the cached object.\nIf your code has access to the Singleton class, then it\u2019s able to\ncall the Singleton\u2019s static method. So whenever that method is\ncalled, the same object is always returned.\nReal-World Analogy\nThe government is an excellent example of the Singleton pat-\ntern. A country can have only one official government. Regard-\nless of the personal identities of the individuals who form\ngovernments, t",
+                    "source": "design-patterns-en.pdf p.142"
+                }
+            },
+            {
+                "id": "ca58980c-2d2a-47ac-918f-26bd9bcd3500",
+                "payload": {
+                    "text": "2. Provide a global access point to that instance. Remember\nthose global variables that you (all right, me) used to store\nsome essential objects? While they\u2019re very handy, they\u2019re also\nvery unsafe since any code can potentially overwrite the con-\ntents of those variables and crash the app.\nJust like a global variable, the Singleton pattern lets you\naccess some object from anywhere in the program. Howev-\ner, it also protects that instance from being overwritten by\nother code.\nThere\u2019s another side",
+                    "source": "design-patterns-en.pdf p.141"
+                }
+            },
+            {
+                "id": "cdbfa437-fda9-4cff-bcc0-23f2af65bc07",
+                "payload": {
+                    "text": "eton even if it solves just one\nof the listed problems.\nSolution\nAll implementations of the Singleton have these two steps in\ncommon:\n\u2022 Make the default constructor private, to prevent other objects\nfrom using the new operator with the Singleton class.\n\u2022 Create a static creation method that acts as a constructor.\nUnder the hood, this method calls the private constructor to\n\uf5b8\n140 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.141"
+                }
+            },
+            {
+                "id": "d68ee8fe-dd99-4b56-8205-e9301a406bda",
+                "payload": {
+                    "text": "Builder\nLets you construct complex objects step by step. The pattern\nallows you to produce different types and representations of an\nobject using the same construction code.\nPrototype\nLets you copy existing objects without making your code depen-\ndent on their classes.\nSingleton\nLets you ensure that a class has only one instance, while provid-\ning a global access point to this instance.\n73 Creational Design Patterns\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.74"
+                }
+            },
+            {
+                "id": "deabd435-0ec0-42cd-baca-a87c19ca8fa5",
+                "payload": {
+                    "text": " only piece of\ncode that needs changing is the body of the getInstance\nmethod.\nHow to Implement\n1. Add a private static field to the class for storing the singleton\ninstance.\n\uf672\n\uf188\n\uf0e7\n\uf188\n\uf0e7\n\uf737\n144 Creational Design Patterns / Singleton\n\n<buyer-email> ",
+                    "source": "design-patterns-en.pdf p.145"
+                }
+            },
+            {
+                "id": "ebd72687-a2d8-4872-9bc7-343440f81db6",
+                "payload": {
+                    "text": "ly\nway to get its object is to call the getInstance method. This\nmethod caches the first created object and returns it in all sub-\nsequent calls.\n// The Database class defines the `getInstance` method that lets1\n// clients access the same instance of a database connection2\n// throughout the program.3\nclassclass DatabaseDatabase isis4\n// The field for storing the singleton instance should be5\n// declared static.6\nprivateprivate staticstatic fieldfield instance: Database7\n8\n// The singleton's cons",
+                    "source": "design-patterns-en.pdf p.143"
+                }
+            },
+            {
+                "id": "fa57458f-69c2-440e-982f-2a48bb131d39",
+                "payload": {
+                    "text": "1. The Singleton class declares the static method getInstance\nthat returns the same instance of its own class.\nThe Singleton\u2019s constructor should be hidden from the client\ncode. Calling the getInstance method should be the only way\nof getting the Singleton object.\nPseudocode\nIn this example, the database connection class acts as aSin-\ngleton. This class doesn\u2019t have a public constructor, so the only\nway to get its object is to call the getInstance method. This\nmethod caches the first created obj",
+                    "source": "design-patterns-en.pdf p.143"
+                }
+            }
+        ],
+        "next_page_offset": null
+    },
+    "status": "ok",
+    "time": 0.016749293
+}

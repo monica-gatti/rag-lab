@@ -1,3 +1,59 @@
+
+# rag-lab
+
+A local, step-by-step lab to understand how a Retrieval-Augmented Generation (RAG)
+system works, block by block.
+
+## Goal
+
+This project is a learning lab, not a product. The goal is to **understand how
+each building block of a RAG pipeline works** and **how each parameter changes
+the final answer**, by building everything locally with simple, readable code
+and measuring the effect of every change.
+
+The pipeline is intentionally minimal: no LangChain or LlamaIndex, just plain
+HTTP calls between three Docker containers, so every step stays visible.
+
+### What I want to formalize
+
+- How text extraction quality (PDF artifacts, code, diagrams) affects retrieval.
+- How chunk size, overlap and top-k change which content reaches the LLM.
+- The difference between keyword (sparse) and semantic (dense) search.
+- How the prompt and model size shape the final answer.
+- How to measure all of this, instead of judging answers "by feel".
+
+### Approach
+
+Each change is run as a separate **experiment**, documented in
+[`experiments/`](experiments/) with its setup, results, observations and
+conclusion. One change at a time, compared against a baseline.
+
+### Non-goals
+
+- Performance, scalability or production readiness.
+- Choosing the "best" framework or model.
+- Redistributing any document: the test corpus stays local and is not
+  committed (see [Credits](#credits)).
+
+## Credits
+
+The test corpus used in this experiment is the book
+**[Dive Into Design Patterns](https://refactoring.guru/design-patterns/book)**
+by **Alexander Shvets**, published by [Refactoring.Guru](https://refactoring.guru).
+Illustrations by Dmitry Zhart.
+
+I chose it because its clear, consistent structure (Intent, Problem, Solution,
+Structure, Pseudocode, Pros and Cons) makes it an excellent document for testing
+how a RAG pipeline extracts, chunks and retrieves technical content.
+
+The book is a paid ebook for personal use. This article contains only short
+excerpts to illustrate extraction issues; no part of the book was redistributed,
+and the indexed copy stayed on my local machine. If you want to learn design
+patterns, I highly recommend buying it — all profits fund the development of
+Refactoring.Guru.
+
+## Blocks of the project rag-lab
+
 | Block              | Role                                                                | Container                 |
 | ------------------ | ------------------------------------------------------------------- | ------------------------- |
 | 1. Loader          | Reads your files                                                    | app                       |
@@ -7,7 +63,7 @@
 | 5. Prompt builder  | Puts the retrieved chunks into the prompt                           | app                       |
 | 6. LLM             | Generates the answer, one token at a time, like the GPT from before | ollama (qwen2.5:0.5b)     |
 
-# Run
+# Run rag-lab
 ```
 docker compose up -d --build
 ```

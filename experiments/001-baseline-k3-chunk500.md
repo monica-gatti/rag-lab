@@ -67,7 +67,7 @@ Establish a reference point: run the RAG pipeline with its default settings and 
 | Elsewhere (TOC p.6, p.32, p.74 summary, p.235 Flyweight) | 6 |
 | **Total**                     | **29**                      |
 
-- k=3 → **3 / 23 chapter chunks ≈ 13% coverage**.
+- k=3 → **3 / 25 chapter chunks ≈12% coverage**.
 - Chapter sections and whether they were retrieved:
 
 | Section             | PDF page(s) | Retrieved |
@@ -109,7 +109,7 @@ Establish a reference point: run the RAG pipeline with its default settings and 
 ### Qdrant
 - `indexed_vectors_count: 0` is expected: 1,179 × 768 × 4 bytes ≈ 3.6 MB, below `indexing_threshold` (10,000 KB) → exact brute-force search.
 - `payload_schema: {}`: no payload index; filters scan all payloads (≈ 10 ms here, fine at this size).
-- `match.text` **without** a text index behaved as a **case-insensitive substring** match (p.32 matched on lowercase `singleton`).
+- `match.text` **without** a text index behaved as a **case-insensitive, apparently word-based (singleton16 does not match)** match (p.32 matched on lowercase `singleton`).
 - Keyword matches include chunks that contain "Singleton" **only in the page header**, so the header pollutes keyword search too.
 - Point IDs are random UUIDs: re-ingesting creates new IDs. Deterministic IDs (e.g. hash of source + chunk index) would make ingestion idempotent.
 - Source labels use the **PDF page index**, which is the printed page number + 1 (PDF p.139 = printed p.138).
